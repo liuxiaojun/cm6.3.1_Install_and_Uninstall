@@ -1,0 +1,42 @@
+网络： ping  各台机器
+内存： free -g
+磁盘挂载： df -h    cat /etc/fstab
+时间同步： date
+运行级别：cat /etc/inittab  应该是default3
+hosts文件检查： cat /etc/hosts
+CPU开超线程：
+禁用Cstate（禁止进入省电模式）: vi /etc/grub.conf 增加以下参数
+intel_idle.nax_cstate=0
+processor.max_cstate=0
+
+修改系统liaits
+编辑  /etc/security/limits.conf
+* soft nproc 262144
+*  hardnproc 262144
+*  soft nofile 262144
+*  hard nofile 262144
+
+ulimit -n
+ 
+编辑   /etc/security/limits.d/90-nproc.conf
+*  soft nproc 262144
+
+
+禁用selinux
+cat /etc/selinux/config
+
+禁用防火墙
+chkconfig | grep tables
+
+禁用irqbalance
+service irqbalance stop
+chkconfig --level 123456 irqbalance off
+
+
+禁用 transprent_hugepage  (非常吃cpu)
+if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
+   echo never > /sys/kernel/mm/transparent_hugepage/enabled
+fi
+if test -f /sys/kernel/mm/transparent_hugepage/defrag; then
+   echo never > /sys/kernel/mm/transparent_hugepage/defrag
+fi
