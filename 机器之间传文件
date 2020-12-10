@@ -1,0 +1,3 @@
+ nc -l 12345 | tar xvf -
+ 
+ tar cvf - openauthorizationservice/ | nc ip 12345
