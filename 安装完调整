@@ -1,0 +1,3 @@
+启动hdfs时，报错 Canary 测试无法在目录 /tmp/.cloudera_health_monitoring_canary_files 中创建文件。  
+经过查看日志，发现  Name node is in safe mode.   
+解决方法：sudo -uhdfs hdfs dfsadmin -safemode leave    
