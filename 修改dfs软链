@@ -1,0 +1,5 @@
+```
+mv /dfs /home/dfs
+chown hdfs:hadoop /home/dfs -R
+/usr/bin/ln -s /home/dfs /dfs
+```
