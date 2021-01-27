@@ -1,0 +1,25 @@
+安装步骤：
+```
+pip3 install apache-airflow
+export PATH=/usr/local/bin:$PATH
+ 
+ 
+vi /etc/profile
+export AIRFLOW_HOME=/root/airflow
+source /etc/profile
+
+
+airflow db init
+ 
+ 
+airflow webserver -p 8080 -D
+airflow scheduler -D
+```
+
+
+
+airflow 创建用户
+```
+airflow users create --lastname user --firstname admin --username admin --email admin_user@mail.com --role Admin --password admin
+airflow users create --lastname user --firstname view --username view --email view_user@mail.com --role Viewer --password view
+```
